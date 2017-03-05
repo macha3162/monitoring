@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Organization:</strong>
+  <%= @component.organization_id %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @component.status %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @component.url %>
+</p>
+
+<%= link_to 'Edit', edit_component_path(@component) %> |
+<%= link_to 'Back', components_path %>
+
+<hr>
+<% @component.monitoring_logs.order(created_at: :desc).each do |log| %>
+<%= log.pretty_print_inspect %><br>
+
+<% end %>

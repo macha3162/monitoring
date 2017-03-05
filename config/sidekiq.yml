@@ -1,0 +1,5 @@
+:dynamic: true
+:schedule:
+  kick_job:
+    every: 10s   # Runs once per minute
+    class: KickJob
