@@ -3,7 +3,7 @@ class KickJob < ApplicationJob
 
   def perform(*args)
     # Do something later
-    Component.all.each do |component|
+    Component.elapsed_time(60).each do |component|
       MonitoringJob.perform_later(component)
     end
   end

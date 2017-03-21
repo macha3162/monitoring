@@ -16,17 +16,19 @@ ActiveRecord::Schema.define(version: 20170303092312) do
     t.bigint "organization_id"
     t.string "status"
     t.string "url"
+    t.datetime "executed_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "monitoring_logs", force: :cascade do |t|
     t.bigint "component_id"
-    t.string "status_code"
+    t.integer "status_code"
     t.string "status"
     t.float "time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["component_id"], name: "index_monitoring_logs_on_component_id"
   end
 
 end

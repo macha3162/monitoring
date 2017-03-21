@@ -15,6 +15,11 @@
   <%= @component.url %>
 </p>
 
+<p>
+  <strong>最終実行日時:</strong>
+  <%= @component.executed_at %>
+</p>
+
 <%= link_to 'Edit', edit_component_path(@component) %> |
 <%= link_to 'Back', components_path %>
 
