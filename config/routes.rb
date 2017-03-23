@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root 'components#index'
+
   require 'sidekiq/web'
   require 'sidekiq-scheduler'
   require 'sidekiq-scheduler/web'

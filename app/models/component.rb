@@ -11,4 +11,9 @@ class Component < ApplicationRecord
     log.save
     touch(:executed_at)
   end
+
+  def set_status(status_code)
+    
+
+  end
 end

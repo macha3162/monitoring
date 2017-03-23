@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20170303092312) do
     t.bigint "organization_id"
     t.string "status"
     t.string "url"
+    t.integer "error_count"
     t.datetime "executed_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
