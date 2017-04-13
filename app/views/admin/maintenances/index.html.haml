@@ -1,0 +1,36 @@
+- model_class = Maintenance
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+%table.table.table-striped
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:title)
+      %th= model_class.human_attribute_name(:description)
+      %th= model_class.human_attribute_name(:start_at)
+      %th= model_class.human_attribute_name(:finish_at)
+      %th= model_class.human_attribute_name(:identifier)
+      %th= model_class.human_attribute_name(:length_in_minutes)
+      %th= model_class.human_attribute_name(:user_id)
+      %th= model_class.human_attribute_name(:service_status_id)
+      %th= model_class.human_attribute_name(:created_at)
+      %th=t '.actions', :default => t("helpers.actions")
+  %tbody
+    - @maintenances.each do |maintenance|
+      %tr
+        %td= link_to maintenance.id, admin_maintenance_path(maintenance)
+        %td= maintenance.title
+        %td= maintenance.description
+        %td= maintenance.start_at
+        %td= maintenance.finish_at
+        %td= maintenance.identifier
+        %td= maintenance.length_in_minutes
+        %td= maintenance.user_id
+        %td= maintenance.service_status_id
+        %td=l maintenance.created_at
+        %td
+          = link_to t('.show', :default => t("helpers.links.show")), admin_maintenance_path(maintenance), :class => 'btn btn-default btn-xs'
+          = link_to t('.edit', :default => t("helpers.links.edit")), edit_admin_maintenance_path(maintenance), :class => 'btn btn-default btn-xs'
+          = link_to t('.destroy', :default => t("helpers.links.destroy")), admin_maintenance_path(maintenance), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs btn-danger'
+
+= link_to t('.new', :default => t("helpers.links.new")), new_admin_maintenance_path, :class => 'btn btn-primary'

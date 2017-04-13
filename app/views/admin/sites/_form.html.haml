@@ -1,0 +1,17 @@
+= simple_form_for [:admin, @site], :html => { :class => 'form-horizontal' } do |f|
+  = f.input :title
+  = f.error_span :title
+  = f.input :description
+  = f.error_span :description
+  = f.input :domain
+  = f.error_span :domain
+  = f.input :http_protocol
+  = f.error_span :http_protocol
+  = f.input :support_email
+  = f.error_span :support_email
+  = f.input :website_url
+  = f.error_span :website_url
+  = f.input :time_zone
+  = f.error_span :time_zone
+  = f.button :submit, :class => 'btn-primary'
+  = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_sites_path, :class => 'btn btn-default'

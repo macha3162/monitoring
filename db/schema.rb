@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170303092312) do
+ActiveRecord::Schema.define(version: 20170411052528) do
 
   create_table "components", force: :cascade do |t|
     t.bigint "organization_id"
@@ -18,6 +18,28 @@ ActiveRecord::Schema.define(version: 20170303092312) do
     t.string "url"
     t.integer "error_count"
     t.datetime "executed_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "issues", force: :cascade do |t|
+    t.string "state"
+    t.integer "service_status_id"
+    t.integer "user_id"
+    t.string "identifier"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "maintenances", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.datetime "start_at"
+    t.datetime "finish_at"
+    t.string "identifier"
+    t.integer "length_in_minutes"
+    t.integer "user_id"
+    t.integer "service_status_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -30,6 +52,54 @@ ActiveRecord::Schema.define(version: 20170303092312) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["component_id"], name: "index_monitoring_logs_on_component_id"
+  end
+
+  create_table "service_statuses", force: :cascade do |t|
+    t.string "name"
+    t.string "permalink"
+    t.string "color"
+    t.string "status_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.string "name"
+    t.string "permalink"
+    t.integer "podition"
+    t.integer "service_status_id"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sites", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "domain"
+    t.string "http_protocol"
+    t.string "support_email"
+    t.string "website_url"
+    t.string "time_zone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end

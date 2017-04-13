@@ -1,4 +1,4 @@
-class ComponentsController < ApplicationController
+class Admin::ComponentsController < Admin::CommonController
   before_action :set_component, only: [:show, :edit, :update, :destroy]
 
   def index

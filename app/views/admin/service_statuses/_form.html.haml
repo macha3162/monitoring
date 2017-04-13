@@ -1,0 +1,11 @@
+= simple_form_for @service_status, :html => { :class => 'form-horizontal' } do |f|
+  = f.input :name
+  = f.error_span :name
+  = f.input :permalink
+  = f.error_span :permalink
+  = f.input :color
+  = f.error_span :color
+  = f.input :status_type
+  = f.error_span :status_type
+  = f.button :submit, :class => 'btn-primary'
+  = link_to t('.cancel', :default => t("helpers.links.cancel")), service_statuses_path, :class => 'btn btn-default'

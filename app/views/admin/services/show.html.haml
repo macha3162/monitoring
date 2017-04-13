@@ -1,0 +1,29 @@
+- model_class = Service
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.titleize
+
+%p
+  %strong= model_class.human_attribute_name(:name) + ':'
+  %br
+  = @service.name
+%p
+  %strong= model_class.human_attribute_name(:permalink) + ':'
+  %br
+  = @service.permalink
+%p
+  %strong= model_class.human_attribute_name(:podition) + ':'
+  %br
+  = @service.podition
+%p
+  %strong= model_class.human_attribute_name(:service_status_id) + ':'
+  %br
+  = @service.service_status_id
+%p
+  %strong= model_class.human_attribute_name(:description) + ':'
+  %br
+  = @service.description
+
+
+= link_to t('.back', :default => t("helpers.links.back")), admin_services_path, :class => 'btn btn-default'
+= link_to t('.edit', :default => t("helpers.links.edit")), edit_admin_service_path(@service), :class => 'btn btn-default'
+= link_to t('.destroy', :default => t("helpers.links.destroy")), admin_service_path(@service), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
