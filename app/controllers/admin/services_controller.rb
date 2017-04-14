@@ -20,6 +20,7 @@ class Admin::ServicesController < Admin::CommonController
     if @service.save
       redirect_to [:admin, @service], notice: 'Service was successfully created.'
     else
+      pp @service.errors
       render :new
     end
   end
@@ -43,6 +44,6 @@ class Admin::ServicesController < Admin::CommonController
   end
 
   def service_params
-    params.require(:service).permit(:name, :permalink, :podition, :service_status_id, :description)
+    params.require(:service).permit(:name, :permalink, :position, :service_status_id, :description)
   end
 end

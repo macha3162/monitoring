@@ -11,13 +11,9 @@
   %br
   = @service.permalink
 %p
-  %strong= model_class.human_attribute_name(:podition) + ':'
-  %br
-  = @service.podition
-%p
   %strong= model_class.human_attribute_name(:service_status_id) + ':'
   %br
-  = @service.service_status_id
+  = @service.service_status.try(:name)
 %p
   %strong= model_class.human_attribute_name(:description) + ':'
   %br

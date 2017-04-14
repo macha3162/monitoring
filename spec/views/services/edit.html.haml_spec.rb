@@ -5,7 +5,7 @@ RSpec.describe "services/edit", type: :view do
     @service = assign(:service, Service.create!(
       :name => "MyString",
       :permalink => "MyString",
-      :podition => 1,
+      :position => 1,
       :service_status_id => 1,
       :description => "MyText"
     ))
@@ -20,7 +20,7 @@ RSpec.describe "services/edit", type: :view do
 
       assert_select "input#service_permalink[name=?]", "service[permalink]"
 
-      assert_select "input#service_podition[name=?]", "service[podition]"
+      assert_select "input#service_position[name=?]", "service[position]"
 
       assert_select "input#service_service_status_id[name=?]", "service[service_status_id]"
 

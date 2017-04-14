@@ -5,8 +5,8 @@ class CreateServices < ActiveRecord::Migration[5.1]
       t.integer :service_status_id
       t.string :name
       t.string :permalink
-      t.integer :podition
-      t.text :description
+      t.integer :position
+      t.string :description
 
       t.timestamps
     end

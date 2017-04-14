@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :users
-
   root 'pages#index'
 
   require 'sidekiq/web'
@@ -8,6 +6,9 @@ Rails.application.routes.draw do
   require 'sidekiq-scheduler/web'
   mount Sidekiq::Web, at: '/sidekiq'
 
+  devise_for :users
+  resources :issues, only: :show
+  resources :maintenances, only: :show
   namespace :admin do
     root 'dashboard#index'
     resources :sites
@@ -15,7 +16,9 @@ Rails.application.routes.draw do
     resources :service_statuses
     resources :maintenances
     resources :components
-    resources :issues
+    resources :issues do
+      resources :issue_updates
+    end
   end
 
 

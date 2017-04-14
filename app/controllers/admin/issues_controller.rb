@@ -28,6 +28,7 @@ class Admin::IssuesController < Admin::CommonController
     if @issue.update(issue_params)
       redirect_to [:admin, @issue], notice: 'Issue was successfully updated.'
     else
+      pp @issue.errors
       render :edit
     end
   end
@@ -43,6 +44,6 @@ class Admin::IssuesController < Admin::CommonController
   end
 
   def issue_params
-    params.require(:issue).permit(:state, :service_status_id, :user_id, :identifier)
+    params.require(:issue).permit(:title, :state, :service_status_id, :user_id, :identifier)
   end
 end

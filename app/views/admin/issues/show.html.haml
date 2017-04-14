@@ -1,7 +1,10 @@
 - model_class = Issue
 .page-header
   %h1=t '.title', :default => model_class.model_name.human.titleize
-
+%p
+  %strong= model_class.human_attribute_name(:title) + ':'
+  %br
+  = @issue.title
 %p
   %strong= model_class.human_attribute_name(:state) + ':'
   %br

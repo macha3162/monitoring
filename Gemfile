@@ -41,8 +41,10 @@ gem 'devise'
 gem 'faraday'
 gem 'haml-rails'
 gem 'simple_form'
+gem 'jquery-rails'
 gem 'twitter-bootstrap-rails'
 gem 'devise'
+gem 'default_value_for'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

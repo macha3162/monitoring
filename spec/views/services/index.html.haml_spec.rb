@@ -6,14 +6,14 @@ RSpec.describe "services/index", type: :view do
       Service.create!(
         :name => "Name",
         :permalink => "Permalink",
-        :podition => 2,
+        :position => 2,
         :service_status_id => 3,
         :description => "MyText"
       ),
       Service.create!(
         :name => "Name",
         :permalink => "Permalink",
-        :podition => 2,
+        :position => 2,
         :service_status_id => 3,
         :description => "MyText"
       )

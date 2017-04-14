@@ -1,2 +1,46 @@
-%h1 Pages#index
-%p Find me in app/views/pages/index.html.haml
+- if @issues.present?
+  .page-header
+    %h3=t '.title', :default => Issue.model_name.human.pluralize.titleize
+    .list-group
+      - @issues.each do |issue|
+        %a.list-group-item.list-group-item-warning{href: issue_path(issue)}
+          %h4.list-group-item-heading
+            = issue.title
+          %p.list-group-item-text
+            = issue.identifier
+
+- if @maintenances.present?
+  .page-header
+    %h3=t '.title', :default => Maintenance.model_name.human.pluralize.titleize
+    .list-group
+      - @maintenances.each do |maintenance|
+        %a.list-group-item.list-group-item-info{href: maintenance_path(maintenance)}
+          %h4.list-group-item-heading
+            = maintenance.title
+          %p.list-group-item-text
+            = maintenance.identifier
+
+.page-header
+  %h3
+    各サービスの稼働状況:
+%ul.list-group
+  - @services.each do |service|
+    %li.list-group-item
+      %span
+        =service.name
+        %a.btn.btn-secondary{rel: 'tooltip', title: service.description}
+          = glyph('question-sign')
+      %span.pull-right{style: "color:##{service.service_status.try(:color)}"}
+        = service.service_status.try(:name)
+
+.page-header
+  %h3
+    Past Incidents
+
+- @days.each do |day|
+  %div
+    .page-header
+      %h4
+        = day
+    No Incident.
+

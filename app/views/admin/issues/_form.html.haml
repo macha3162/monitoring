@@ -1,11 +1,5 @@
 = simple_form_for [:admin, @issue], :html => { :class => 'form-horizontal' } do |f|
-  = f.input :state
-  = f.error_span :state
-  = f.input :service_status_id
-  = f.error_span :service_status_id
-  = f.input :user_id
-  = f.error_span :user_id
-  = f.input :identifier
-  = f.error_span :identifier
+  = f.input :title
+  = f.input :state, collection: Issue::STATES
   = f.button :submit, :class => 'btn-primary'
   = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_issues_path, :class => 'btn btn-default'

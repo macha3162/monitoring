@@ -4,3 +4,8 @@
   Static version of css will use Glyphicons sprites by default
   =require twitter-bootstrap-static/sprites
 */
+
+.page .container {
+    max-width: 700px;
+    margin: 0 auto;
+}

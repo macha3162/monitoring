@@ -2,7 +2,7 @@ FactoryGirl.define do
   factory :service do
     name "MyString"
     permalink "MyString"
-    podition 1
+    position 1
     service_status_id 1
     description "MyText"
   end

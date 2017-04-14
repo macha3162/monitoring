@@ -5,6 +5,7 @@
   %thead
     %tr
       %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:title)
       %th= model_class.human_attribute_name(:state)
       %th= model_class.human_attribute_name(:service_status_id)
       %th= model_class.human_attribute_name(:user_id)
@@ -15,6 +16,7 @@
     - @issues.each do |issue|
       %tr
         %td= link_to issue.id, admin_issue_path(issue)
+        %td= issue.title
         %td= issue.state
         %td= issue.service_status_id
         %td= issue.user_id

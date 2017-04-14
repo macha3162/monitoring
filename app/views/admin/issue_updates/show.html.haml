@@ -1,0 +1,29 @@
+- model_class = IssueUpdate
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.titleize
+
+%p
+  %strong= model_class.human_attribute_name(:state) + ':'
+  %br
+  = @issue_update.state
+%p
+  %strong= model_class.human_attribute_name(:issue_id) + ':'
+  %br
+  = @issue_update.issue_id
+%p
+  %strong= model_class.human_attribute_name(:user_id) + ':'
+  %br
+  = @issue_update.user_id
+%p
+  %strong= model_class.human_attribute_name(:identifier) + ':'
+  %br
+  = @issue_update.identifier
+%p
+  %strong= model_class.human_attribute_name(:description) + ':'
+  %br
+  = @issue_update.description
+
+
+= link_to t('.back', :default => t("helpers.links.back")), issue_updates_path, :class => 'btn btn-default'
+= link_to t('.edit', :default => t("helpers.links.edit")), edit_issue_update_path(@issue_update), :class => 'btn btn-default'
+= link_to t('.destroy', :default => t("helpers.links.destroy")), issue_update_path(@issue_update), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'

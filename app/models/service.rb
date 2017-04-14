@@ -1,4 +1,7 @@
 class Service < ApplicationRecord
 
-  attribute :permalink, :string, default: -> { self.name.parameterize }
+  belongs_to :service_status, default: -> { ServiceStatus.default }
+  default_value_for :permalink do |model|
+    model.name.try(:parameterize)
+  end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170411052528) do
+ActiveRecord::Schema.define(version: 20170413065013) do
 
   create_table "components", force: :cascade do |t|
     t.bigint "organization_id"
@@ -22,23 +22,36 @@ ActiveRecord::Schema.define(version: 20170411052528) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "issue_updates", force: :cascade do |t|
+    t.string "state"
+    t.integer "issue_id"
+    t.integer "user_id"
+    t.string "identifier"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["issue_id"], name: "index_issue_updates_on_issue_id"
+    t.index ["user_id"], name: "index_issue_updates_on_user_id"
+  end
+
   create_table "issues", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "title"
     t.string "state"
     t.integer "service_status_id"
-    t.integer "user_id"
     t.string "identifier"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "maintenances", force: :cascade do |t|
+    t.integer "user_id"
     t.string "title"
     t.text "description"
     t.datetime "start_at"
     t.datetime "finish_at"
     t.string "identifier"
     t.integer "length_in_minutes"
-    t.integer "user_id"
     t.integer "service_status_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -55,6 +68,7 @@ ActiveRecord::Schema.define(version: 20170411052528) do
   end
 
   create_table "service_statuses", force: :cascade do |t|
+    t.integer "user_id"
     t.string "name"
     t.string "permalink"
     t.string "color"
@@ -64,16 +78,18 @@ ActiveRecord::Schema.define(version: 20170411052528) do
   end
 
   create_table "services", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "service_status_id"
     t.string "name"
     t.string "permalink"
-    t.integer "podition"
-    t.integer "service_status_id"
-    t.text "description"
+    t.integer "position"
+    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "sites", force: :cascade do |t|
+    t.integer "user_id"
     t.string "title"
     t.text "description"
     t.string "domain"
